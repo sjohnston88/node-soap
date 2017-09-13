@@ -2,6 +2,20 @@
 
 > A SOAP client and server for node.js.
 
+Note: Forked to allow this package to work with the Bronto SOAP API quirks: Login and authenticate as normal, but use the following wsdlOptions object on all subsequent requests:
+
+``` javascript
+var wsdlOptions = {
+    envelopeKey : 'soapenv',
+    disableCache : true,
+    customSchema : 'xmlns:v4="http://api.bronto.com/v4"',
+    useEmptyTag: true,
+    overrideRootElement: {
+        "namespace": 'v4:',
+    }     
+};
+```
+
 This module lets you connect to web services using SOAP.  It also provides a server that allows you to run your own SOAP services.
 
 <!-- Run `npm run toc` to update below section -->
